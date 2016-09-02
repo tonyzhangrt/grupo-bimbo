@@ -3,8 +3,9 @@ import pandas as pd
 import re
 from sklearn import preprocessing
 
+# to achieve better performance it is recommended to do re.compile for all the regex
 
-df_client = pd.read_csv("./input/cliente_tabla.csv")
+df_client = pd.read_csv("../input/cliente_tabla.csv")
 
 np_to_upper = np.vectorize(lambda x: x.upper())
 df_client[u'NombreCliente'] = np_to_upper(df_client[u'NombreCliente'].values)
@@ -222,4 +223,4 @@ le.fit(client_short_name)
 
 df_client_mod['short_name_id'] = le.transform(client_short_name)
 
-df_client_mod.to_csv('./input/cliente_tabla.mod.csv', index = False)
+df_client_mod.to_csv('../input/cliente_tabla.mod.csv', index = False)

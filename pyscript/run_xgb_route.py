@@ -11,13 +11,15 @@ NUM_CORES = multiprocessing.cpu_count()
 
 timestamp =  datetime.datetime.now().strftime('%Y%m%d%H%M%S')
 
+# these are the data set only contain client-product pair lag and route-product pair lag
+
 TRAIN_FILE = '../input/train_lag25_route_extra_89.clientproductdepotroute.csv'
 TEST_FILE = '../input/test_lag25_route_extra_1011.clientproductdepotroute.csv'
 
 TRAIN_BUFFER = '../buffer/train_lag25_route_extra_89.clientproductdepotroute.csv.buffer'
 TEST_BUFFER = '../buffer/test_lag25_route_extra_1011.clientproductdepotroute.csv.buffer'
 
-SAMPLE_SUB = '../output/submission20160829112145.csv'
+SAMPLE_SUB = '../output/sample_submission.csv'
 
 INITIAL_MODEL_FILE = '../model/lag25_route_extra.model'
 
@@ -127,7 +129,7 @@ def run_xgb():
 
         df_pred['Demanda_uni_equil'] = y_prep_pred
 
-        df_pred.to_csv('../output/sub'+timestamp+'.%s'%(cur_round)+'.csv', index = False) 
+        df_pred.to_csv('../output/sub_cp_rp_'+timestamp+'.%s'%(cur_round)+'.csv', index = False) 
         
         cur_model_file = INITIAL_MODEL_FILE+'.%s'%(cur_round)
 

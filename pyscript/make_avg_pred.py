@@ -8,7 +8,7 @@ from sklearn.cross_validation import train_test_split
 import os.path
 
 NUM_CORES = multiprocessing.cpu_count()
-SAMPLE_SUB = '../output/submission20160829112145.csv'
+SAMPLE_SUB = '../output/sample_submission.csv'
 
 
 def make_pred(model_file, test_buffer_file):
@@ -25,14 +25,10 @@ def make_avg_pred():
     model_folder = '../model/'
     buffer_folder = '../buffer/'
 
-    model_file_list = ['lag25_route_nl_extra.model.400.400.400', 'lag25_route_extra.model.400.800', 
-                        'lag25_route_client_nl_extra.model.1200', 'lag25_route_client_extra.model.1200']
+    # insert model file and buffer filename generated during training
+    model_file_list = []
 
-    test_buffer_file_list = ['test_lag25_route_nl_extra_1011.clientproductdepotroute.csv.buffer',
-                            'test_lag25_route_extra_1011.clientproductdepotroute.csv.buffer',
-                            'test_lag25_route_nl_extra_1011.clientproductdepotroute.clientlag.csv.buffer',
-                            'test_lag25_route_extra_1011.clientproductdepotroute.clientlag.csv.buffer'
-                            ]
+    test_buffer_file_list = []
 
     model_filepath_list = [model_folder+model_file for model_file in model_file_list]
     test_buffer_filepath_list = [buffer_folder+buffer_file for buffer_file in test_buffer_file_list]
@@ -60,7 +56,7 @@ def make_avg_pred():
 
     df_pred_logavg['Demanda_uni_equil'] = pred_logavg
 
-    AVG_FILE_NAME = '../output/sub_lag25_avg.model.1200.csv'
+    AVG_FILE_NAME = '../output/final_avg.csv'
 
     df_pred_logavg.to_csv(AVG_FILE_NAME, index = False)
 

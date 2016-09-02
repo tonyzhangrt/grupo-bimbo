@@ -4,7 +4,7 @@ import re
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 
-products  =  pd.read_csv("./input/producto_tabla.csv")
+products  =  pd.read_csv("../input/producto_tabla.csv")
 
 product_id_list = products['Producto_ID'].values
 product_name_list = products['NombreProducto'].values
@@ -69,7 +69,7 @@ products['brand'] = product_brand_list
 products['weight'] = product_weight_list
 products['pieces'] = product_piece_list    
 
-df_download_products  =  pd.read_csv("./input/download_product_name.csv")
+df_download_products  =  pd.read_csv("../input/download_product_name.csv")
 
 category_lookup_list = map(lambda x: x.lower(), df_download_products['category'].values)
 subcategory_lookup_list = map(lambda x: x.lower(), df_download_products['subcategory'].values)
@@ -246,4 +246,4 @@ for i, (product_short_name, processed_product_short_name, product_weight) in enu
                 product_category_list.append('other')
 
 products['tentative_category'] = product_category_list
-products.to_csv('./input/producto_tabla.mod.csv', index = False)                
+products.to_csv('../input/producto_tabla.mod.csv', index = False)                
