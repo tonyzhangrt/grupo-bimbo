@@ -1,0 +1,6 @@
+*.o
+*.out
+bin/*
+build/*
+*.csv
+!download_product_name.csv
